@@ -2,7 +2,12 @@
 
 ## Getting Started
 
-First, run the development server:
+First, download the zip file and go to the directory.
+```bash
+cd <path>/pomodoro-app
+```
+
+Second, run the development sever:
 
 ```bash
 npm run dev
