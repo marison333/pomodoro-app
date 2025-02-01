@@ -1,5 +1,5 @@
 # Pomodoro Timer
-
+[![Build with TypeScript, Next.js & TailwindCSS](https://skillicons.dev/icons?i=ts,next,tailwind)](https://skillicons.dev)
 ## Getting Started
 
 First, download the zip file and go to the directory and install all dependencies
