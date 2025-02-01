@@ -1,12 +1,32 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function PomodoroTimer() {
   const [minutes, setMinutes] = useState(25);
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [mode, setMode] = useState("work");
+
+  // ref for audio element
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Initialize our audio element when the component mounts
+  useEffect(() => {
+    audioRef.current = new Audio('/notification.wav');
+  }, []);
+
+  const playNotification = () => {
+    // Safety check to ensure audio is loaded
+    if (audioRef.current) {
+      // Reset the audio to the start
+      audioRef.current.currentTime = 0;
+      // Play the sound
+      audioRef.current.play().catch(error => {
+        console.log('Error playing audio:', error);
+      });
+    }
+  };
 
   // Previous handler functions remain the same
   function handleStartPause() {
@@ -39,6 +59,9 @@ export default function PomodoroTimer() {
       else {
         // Clears the interval first
         clearInterval(timerInterval);
+
+        // Play notification when timer ends
+        playNotification();
 
         // Switch modes and reset time
         if (mode === "work") {
