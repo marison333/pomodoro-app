@@ -6,7 +6,7 @@ interface Task {
   id: number;
   description: string;
   timestamp: Date;
-  mode: "Work" | "break";
+  mode: "work" | "break";
   completed: boolean;
 }
 
@@ -14,7 +14,7 @@ export default function PomodoroTimer() {
   const [minutes, setMinutes] = useState(25);
   const [seconds, setSeconds] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
-  const [mode, setMode] = useState("work");
+  const [mode, setMode] = useState<"work" | "break">("work");
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const [currentTask, setCurrentTask] = useState("");
