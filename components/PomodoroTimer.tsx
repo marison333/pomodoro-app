@@ -115,6 +115,10 @@ export default function PomodoroTimer() {
     return () => clearInterval(timerInterval);
   }, [isRunning, minutes, seconds, mode, tasks.length]);
 
+  const handleDeleteTask = (id: number) => {
+    setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
+  };
+
   return (
       <div className="p-6 max-w-md mx-auto bg-white rounded-xl shadow-lg">
         <div className="text-center">
@@ -172,27 +176,38 @@ export default function PomodoroTimer() {
             </button>
           </div>
 
-          {/* Task list */}
-          <div className="text-left">
-            <h3 className="font-bold mb-2">Recent Tasks:</h3>
-            <div className="space-y-2">
-              {tasks.map(task => (
-                  <div
-                      key={task.id}
-                      className={`p-2 rounded ${
-                          task.completed
-                              ? 'bg-green-100'
-                              : 'bg-yellow-100'
-                      }`}
-                  >
-                    <div className="font-medium">{task.description}</div>
-                    <div className="text-sm text-gray-600">
-                      {task.timestamp.toLocaleTimeString()} - {task.mode} session
-                      {task.completed && ' ✓'}
-                    </div>
-                  </div>
-              ))}
-            </div>
+          {/* Task list section */}
+          <div className="mt-6">
+            <h3 className="text-lg font-bold mb-4">Task List</h3>
+            {tasks.length === 0 ? (
+                <p className="text-gray-500">No tasks added yet</p>
+            ) : (
+                <div className="space-y-2">
+                  {tasks.map(task => (
+                      <div
+                          key={task.id}
+                          className={`flex items-center justify-between p-3 rounded ${
+                              task.completed
+                                  ? 'bg-green-100'
+                                  : 'bg-yellow-100'
+                          }`}
+                      >
+                        <div className="justify-items-start">
+                          <span className={`font-medium ${task.completed ? 'line-through' : ''}`}>{task.description}</span>
+                          <div className="text-sm text-gray-600">
+                            {task.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} - {task.mode} session
+                          </div>
+                        </div>
+                        <button
+                            onClick={() => handleDeleteTask(task.id)}
+                            className="text-red-500 hover:text-red-700"
+                        >
+                          🗑️
+                        </button>
+                      </div>
+                  ))}
+                </div>
+            )}
           </div>
         </div>
       </div>
