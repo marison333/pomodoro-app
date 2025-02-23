@@ -8,12 +8,12 @@ type Task = {
   completed: boolean;
 }
 
-interface TaskSidebarProps {
+interface SidebarProps {
   tasks: Task[];
   handleDeleteTask: (id: number) => void;
 }
 
-const TaskSidebar: React.FC<TaskSidebarProps> = ({
+const TaskSidebar: React.FC<SidebarProps> = ({
   tasks,
   handleDeleteTask,
 }) => {
