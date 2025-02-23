@@ -87,7 +87,10 @@ const Timer: React.FC<TimerProps> = ({
       <footer className="p-4 text-center">
         <p>
           Build by{" "}
-          <a className="underline text-blue-600" href="">
+          <a
+            className="underline text-blue-600"
+            href="https://github.com/marison333"
+          >
             Marison
           </a>
         </p>
