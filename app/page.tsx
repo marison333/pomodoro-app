@@ -1,5 +1,3 @@
- import PomodoroTimer from "@/components/PomodoroTimer";
-
 export default function Home() {
-  return <PomodoroTimer />;
+  return <h1>Hello world</h1>;
 }
