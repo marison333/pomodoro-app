@@ -131,6 +131,7 @@ export default function PomodoroTimer() {
     </div>
   );
 }
+
 function loadStoredTasks(): Task[] {
   if (typeof window !== "undefined") {
     const storedTasks = localStorage.getItem("tasks");
