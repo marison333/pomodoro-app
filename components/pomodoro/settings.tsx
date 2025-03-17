@@ -1,5 +1,3 @@
-// components/pomodoro/settings.tsx
-
 import { useState } from "react";
 import {
   Dialog,

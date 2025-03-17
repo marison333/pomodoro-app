@@ -99,7 +99,7 @@ export default function History({ sessions }: HistoryProps) {
                         .map((session) => (
                           <TableRow key={session.id}>
                             <TableCell>
-                              {new Date(session.startTime).toLocaleTimeString()}
+                              {formatDate(session.startTime)}
                             </TableCell>
                             <TableCell>{getModeLabel(session.mode)}</TableCell>
                             <TableCell>
