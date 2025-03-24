@@ -7,11 +7,11 @@ import History from "@/components/pomodoro/history";
 import { usePomodoro } from "@/hooks/use-pomodoro";
 
 export default function Home() {
-  const { settings, sessions, actions } = usePomodoro();
+  const { settings, timerState, displayTime, sessions, actions } =
+    usePomodoro();
 
   const [mounted, setMounted] = useState(false);
 
-  // Prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -33,7 +33,12 @@ export default function Home() {
             />
           </div>
         </div>
-        <Timer />
+        <Timer
+          settings={settings}
+          timerState={timerState}
+          displayTime={displayTime}
+          actions={actions}
+        />
       </div>
     </main>
   );

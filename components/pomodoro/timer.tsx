@@ -1,12 +1,27 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import Controls from "./controls";
-import { usePomodoro } from "@/hooks/use-pomodoro";
-import { TimerMode } from "@/lib/types";
+import { TimerMode, TimerSettings, TimerState } from "@/lib/types";
 
-export default function Timer() {
-  const { settings, timerState, displayTime, actions } = usePomodoro();
+interface TimerProps {
+  settings: TimerSettings;
+  timerState: TimerState;
+  displayTime: string;
+  actions: {
+    startTimer: () => void;
+    pauseTimer: () => void;
+    resetTimer: () => void;
+    changeMode: (mode: TimerMode) => void;
+    updateSettings: (settings: Partial<TimerSettings>) => void;
+  };
+}
 
+export default function Timer({
+  settings,
+  timerState,
+  displayTime,
+  actions,
+}: TimerProps) {
   // Calculate progress percentage
   const calculateProgress = (): number => {
     const totalTime = (() => {
