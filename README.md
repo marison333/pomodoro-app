@@ -48,10 +48,10 @@ The **Pomodoro Timer** is a productivity tool based on the Pomodoro Technique, h
 #### Installation Steps
 ```bash
 # Clone the repository
-git clone https://your-repo-url.git
+git clone https://github.com/marison333/pomodoro-app.git
 
 # Navigate to project directory
-cd pomodoro-timer
+cd pomodoro-app
 
 # Install dependencies
 npm install
